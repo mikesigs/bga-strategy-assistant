@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "BGA Strategy Assistant",
+  "version": "0.1.0",
+  "description": "AI-powered strategy assistant for BoardGameArena games.",
+
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs"
+  ],
+
+  "host_permissions": [
+    "https://*.boardgamearena.com/*",
+    "https://api.openai.com/*",
+    "https://api.anthropic.com/*",
+    "https://boardgamegeek.com/*"
+  ],
+
+  "side_panel": {
+    "default_path": "src/sidepanel/index.html"
+  },
+
+  "background": {
+    "service_worker": "src/background/index.ts",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.boardgamearena.com/*"
+      ],
+      "js": ["src/content/index.ts"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://*.boardgamearena.com/*"
+      ],
+      "js": ["src/content/main-world.ts"],
+      "run_at": "document_idle",
+      "world": "MAIN"
+    }
+  ],
+
+  "action": {
+    "default_title": "BGA Strategy Assistant"
+  },
+
+  "icons": {
+    "16": "public/icon16.png",
+    "48": "public/icon48.png",
+    "128": "public/icon128.png"
+  }
+}
