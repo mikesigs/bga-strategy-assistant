@@ -11,7 +11,7 @@
     "@crxjs/vite-plugin": "^2.0.0-beta.23",
     "@types/chrome": "^0.0.268",
     "typescript": "^5.4.5",
-    "vite": "^5.2.11"
+    "vite": "^8.2.1"
   },
   "dependencies": {
     "pdfjs-dist": "^3.11.174"
